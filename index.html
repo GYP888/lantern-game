@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>提灯者 · The Lantern Bearer</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="wrap">
+    <header class="titlebar">
+      <div class="brand"><span class="brand-main" data-i18n="brandMain">提灯者</span> <span class="brand-sub" data-i18n="brandSub">THE LANTERN BEARER</span></div>
+      <div class="titlebar-right">
+        <div class="hud">
+          <span id="stageLabel">Stage 1</span>
+          <span id="fragLabel">碎片 0/3</span>
+          <span id="timeLabel">本关 00:00.0</span>
+          <span id="totalLabel">总计 00:00.0</span>
+        </div>
+        <!-- 语言切换放在标题栏最右端（画布之外），不会遮挡游戏画面 -->
+        <div class="lang-switch" role="group" aria-label="Language">
+          <button type="button" data-lang="zh" class="active">中</button><button type="button" data-lang="en">EN</button>
+        </div>
+      </div>
+    </header>
+
+    <div class="stage-wrap">
+      <canvas id="game" width="600" height="600" aria-label="提灯者游戏画面" data-i18n-aria="canvasLabel"></canvas>
+
+      <!-- 状态覆盖层：开始 / 失败 / 通关。由 game.js 切换内容。 -->
+      <div id="overlay" class="overlay">
+        <div class="panel">
+          <h1 data-i18n="startTitle">提灯者</h1>
+          <p class="sub" data-i18n="startSub">THE LANTERN BEARER</p>
+          <p class="body" data-i18n-html="startBody">
+            移动鼠标，本体会拖着自己缓慢追上光晕。<br>
+            只有光能照出墙，也只有光能冻结暗影。<br>
+            找齐三枚碎片，走进右下角的大门。
+          </p>
+          <button data-action="start" data-i18n="startBtn">开始探索</button>
+          <p class="tip" data-i18n="startTip">零点击操作 · 仅靠移动鼠标</p>
+        </div>
+      </div>
+    </div>
+
+    <footer class="foot" data-i18n="foot">鼠标移动 = 视线　·　R = 重试当前关</footer>
+  </main>
+
+  <!-- 普通 script，保证直接双击 index.html（file://）也能运行 -->
+  <script src="src/i18n.js"></script>
+  <script src="src/levels.js"></script>
+  <script src="src/game.js"></script>
+</body>
+</html>

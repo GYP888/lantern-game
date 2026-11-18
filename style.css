@@ -1,0 +1,215 @@
+/* 提灯者 — 极简黑白界面样式。想改字体/按钮外观只改这里。 */
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  min-height: 100%;
+  background: #08080a;
+  color: #e8e8e8;
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+
+.wrap {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 24px 16px 18px;
+}
+
+.titlebar {
+  width: min(600px, 92vw);
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.brand {
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+}
+
+.brand .brand-sub {
+  margin-left: 8px;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  color: #777;
+}
+
+/* 标题栏右侧：HUD + 语言按钮。始终在画布之外，不会遮住游戏画面。 */
+.titlebar-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.hud {
+  display: flex;
+  gap: 14px;
+  font-size: 12px;
+  color: #aaa;
+  font-variant-numeric: tabular-nums;
+}
+
+.hud span + span::before {
+  content: "·";
+  margin-right: 14px;
+  color: #444;
+}
+
+.stage-wrap {
+  position: relative;
+  width: min(600px, 92vw);
+  aspect-ratio: 1 / 1;
+}
+
+#game {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  border: 1px solid #2a2a2c;
+  cursor: none;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.86);
+  transition: opacity 180ms ease;
+}
+
+.overlay.hidden {
+  display: none;
+}
+
+.panel {
+  width: min(440px, 84%);
+  text-align: center;
+  pointer-events: auto;
+}
+
+.panel h1 {
+  margin: 0 0 4px;
+  font-size: 32px;
+  font-weight: 500;
+  letter-spacing: 0.32em;
+  text-indent: 0.32em;
+}
+
+.panel .sub {
+  margin: 0 0 26px;
+  font-size: 10px;
+  letter-spacing: 0.34em;
+  color: #777;
+}
+
+.panel .body {
+  margin: 0 0 26px;
+  font-size: 13px;
+  line-height: 2;
+  color: #c4c4c4;
+}
+
+.panel .result {
+  margin: 0 0 8px;
+  font-size: 15px;
+  color: #eee;
+}
+
+.panel .detail {
+  margin: 0 0 24px;
+  font-size: 12px;
+  color: #999;
+  font-variant-numeric: tabular-nums;
+}
+
+.panel .tip {
+  margin: 18px 0 0;
+  font-size: 11px;
+  color: #666;
+  letter-spacing: 0.08em;
+}
+
+.panel .row {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+button {
+  appearance: none;
+  border: 1px solid #bbb;
+  background: transparent;
+  color: #eee;
+  padding: 10px 22px;
+  font: inherit;
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  cursor: pointer;
+  transition: background 140ms ease, color 140ms ease, border-color 140ms ease;
+}
+
+button:hover:not(:disabled) {
+  background: #eee;
+  color: #000;
+  border-color: #eee;
+}
+
+button:disabled {
+  border-color: #444;
+  color: #555;
+  cursor: not-allowed;
+}
+
+/* 右上角语言切换：小尺寸、弱边框，和游戏面板按钮明显区分 */
+.lang-switch {
+  display: flex;
+  gap: 2px;
+  flex: 0 0 auto;
+}
+
+.lang-switch button {
+  padding: 3px 8px;
+  font-size: 11px;
+  line-height: 1.4;
+  letter-spacing: 0.04em;
+  border-color: #333;
+  color: #777;
+  opacity: 0.7;
+}
+
+.lang-switch button:hover:not(:disabled) {
+  background: transparent;
+  color: #ddd;
+  border-color: #888;
+}
+
+.lang-switch button.active {
+  border-color: #bbb;
+  color: #f0f0f0;
+  opacity: 1;
+}
+
+/* 英文更长，稍收字号避免标题栏折行过碎 */
+html[lang="en"] .brand { font-size: 13px; letter-spacing: 0.1em; }
+html[lang="en"] .panel h1 { font-size: 26px; letter-spacing: 0.14em; text-indent: 0.14em; }
+
+.foot {
+  font-size: 11px;
+  color: #555;
+  letter-spacing: 0.1em;
+}
